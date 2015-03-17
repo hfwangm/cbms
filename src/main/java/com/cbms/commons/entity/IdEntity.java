@@ -1,4 +1,4 @@
-package com.cbms.utils.entity;
+package com.cbms.commons.entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

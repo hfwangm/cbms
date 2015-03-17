@@ -1,4 +1,4 @@
-package com.cbms.utils.service;
+package com.cbms.commons.service;
 
 /**
  * Service层公用exception

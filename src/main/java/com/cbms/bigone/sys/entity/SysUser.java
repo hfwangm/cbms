@@ -1,6 +1,6 @@
 package com.cbms.bigone.sys.entity;
 
-import com.cbms.utils.entity.IdEntity;
+import com.cbms.commons.entity.IdEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.ToStringBuilder;
