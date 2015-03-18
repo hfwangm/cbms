@@ -24,8 +24,17 @@
         <aspectj.version>1.8.5</aspectj.version>
         <slf4j.version>1.7.8</slf4j.version>
         <logback.version>1.1.2</logback.version>
+        <com.googlecode.log4jdbc.version>1.2</com.googlecode.log4jdbc.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <commons-io.version>2.4</commons-io.version>
+        <dozer.version>5.5.1</dozer.version>
         <guava.version>18.0</guava.version>
+        <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
+        <javax.servlet.jsp-api.version>2.0</javax.servlet.jsp-api.version>
+        <javax.servlet.javax.servlet-api>3.0.1</javax.servlet.javax.servlet-api>
+        <spymemcached.version>2.11.6</spymemcached.version>
+        <freemarker.version>2.3.22</freemarker.version>
 
         <junit.version>4.12</junit.version>
         <assertj.version>1.7.0</assertj.version>
@@ -160,13 +169,19 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${javax.servlet.jstl.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${javax.servlet.jsp-api.version}</version>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <version>${javax.servlet.javax.servlet-api}</version>
             <scope>provided</scope>
         </dependency>
         <!-- web end-->
@@ -185,7 +200,7 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.10</version>
+            <version>${commons-codec.version}</version>
         </dependency>
         <!--  security end -->
 
@@ -247,10 +262,23 @@
         <dependency>
             <groupId>com.googlecode.log4jdbc</groupId>
             <artifactId>log4jdbc</artifactId>
-            <version>1.2</version>
+            <version>${com.googlecode.log4jdbc.version}</version>
             <scope>runtime</scope>
         </dependency>
         <!--  log end  -->
+
+        <dependency>
+            <groupId>net.spy</groupId>
+            <artifactId>spymemcached</artifactId>
+            <version>${spymemcached.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+
 
         <!-- general commons begin -->
         <dependency>
@@ -261,12 +289,12 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>
-            <version>5.5.1</version>
+            <version>${dozer.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
