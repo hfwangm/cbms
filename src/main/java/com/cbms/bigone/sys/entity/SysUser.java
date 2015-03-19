@@ -1,16 +1,19 @@
 package com.cbms.bigone.sys.entity;
 
 import com.cbms.commons.entity.IdEntity;
+import com.cbms.commons.utils.Collections3;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 系统用户表
@@ -27,6 +30,10 @@ public class SysUser extends IdEntity {
     private String email;
     private Date registerDate;
     private String status;
+
+    private Team team;
+
+    private List<Role> roleList = Lists.newArrayList();
 
     public SysUser(){
 
@@ -117,4 +124,35 @@ public class SysUser extends IdEntity {
         return ToStringBuilder.reflectionToString(this);
     }
 
+    //多对多定义
+    @ManyToMany
+    @JoinTable(name = "sys_user_role" , joinColumns = { @JoinColumn(name = "user_id") } ,
+            inverseJoinColumns = { @JoinColumn(name = "role_id") })
+    //Fetch策略定义
+    @Fetch(FetchMode.SUBSELECT)
+    //集合按ID排序
+    @OrderBy("id ASC")
+    public List<Role> getRoleList(){
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList){
+        this.roleList = roleList;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    @Transient
+    @JsonIgnore
+    public String getRoleNames() {
+        return Collections3.extractToString(roleList, "name", ", ");
+    }
 }
