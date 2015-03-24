@@ -2,12 +2,11 @@ package com.cbms.bigone.sys.entity;
 
 import com.cbms.commons.entity.IdEntity;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -19,7 +18,8 @@ import java.util.List;
 public class Role extends IdEntity {
 
     private String name;
-    private String permissions;
+    private String discription;
+    private List<Permission> permissionsList = Lists.newArrayList();
 
     public Role(){}
 
@@ -35,18 +35,31 @@ public class Role extends IdEntity {
         this.name = name;
     }
 
-    public String getPermissions() {
-        return permissions;
+    public String getDiscription(){
+        return discription;
     }
 
-    public void setPermissions(String permissions) {
-        this.permissions = permissions;
+    public void setDiscription(String discription){
+        this.discription = discription;
     }
 
-    @Transient
-    public List<String> getPermissionList() {
-        return ImmutableList.copyOf(StringUtils.split(permissions, ","));
+    //多对多定义
+    @ManyToMany
+    @JoinTable(name = "sys_role_permission" , joinColumns = { @JoinColumn(name = "role_id") } ,
+    inverseJoinColumns = { @JoinColumn(name = "permission_id") })
+    public List<Permission> getPermissionsList(){
+        return permissionsList;
     }
+
+    public void setPermissionsList(List<Permission> permissionsList){
+        this.permissionsList = permissionsList;
+    }
+
+    //另一种数据库表设计方式，role和permission合二为一，permission以,分隔存储
+//    @Transient
+//    public List<String> getPermissionList() {
+//        return ImmutableList.copyOf(StringUtils.split(permissions, ","));
+//    }
 
     @Override
     public String toString() {
