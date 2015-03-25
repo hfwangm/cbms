@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  * 用户管理类
- * Created by Administrator on 2015/3/14.
+ * Created by Administrator .
  */
 //Spring Service Bean的标识
 @Component

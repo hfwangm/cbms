@@ -13,7 +13,7 @@ import java.util.Date;
 
 /**
  * 日志表
- * Created by Administrator on 2015/3/11.
+ * Created by Administrator .
  */
 @Entity
 @Table(name = "sys_log")
