@@ -1,7 +1,9 @@
 package com.cbms.bigone.sys.service.account;
 
+import com.cbms.bigone.sys.entity.Role;
 import com.cbms.bigone.sys.entity.SysUser;
 import com.cbms.bigone.sys.repository.SysUserDao;
+import com.cbms.bigone.sys.service.ShiroDBRealm;
 import com.cbms.commons.persistence.DynamicSpecifications;
 import com.cbms.commons.persistence.Hibernates;
 import com.cbms.commons.persistence.SearchFilter;
@@ -9,6 +11,7 @@ import com.cbms.commons.security.Digests;
 import com.cbms.commons.utils.Clock;
 import com.cbms.commons.utils.Encodes;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,5 +140,18 @@ public class AccountService {
 
         byte[] hashPassword = Digests.sha1(user.getPlainPassword().getBytes(),salt,HASH_INTERATIONS);
         user.setPassword(Encodes.encodeHex(hashPassword));
+    }
+
+    /**
+     * 取出Shiro中的当前用户LoginName
+     * @return
+     */
+    private String getCurrentUserName(){
+        ShiroDBRealm.ShiroUser user = (ShiroDBRealm.ShiroUser) SecurityUtils.getSubject().getPrincipal();
+        return user.loginName;
+    }
+
+    public static List<Role> roleList(){
+
     }
 }

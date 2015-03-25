@@ -19,7 +19,8 @@ public class Role extends IdEntity {
 
     private String name;
     private String discription;
-    private List<Permission> permissionsList = Lists.newArrayList();
+//    private List<Permission> permissionsList = Lists.newArrayList();
+    private List<Menu> menuList = Lists.newArrayList();
 
     public Role(){}
 
@@ -45,15 +46,23 @@ public class Role extends IdEntity {
 
     //多对多定义
     @ManyToMany
-    @JoinTable(name = "sys_role_permission" , joinColumns = { @JoinColumn(name = "role_id") } ,
-    inverseJoinColumns = { @JoinColumn(name = "permission_id") })
-    public List<Permission> getPermissionsList(){
-        return permissionsList;
+    @JoinTable(name = "sys_role_menu" , joinColumns = { @JoinColumn(name = "role_id") } ,
+    inverseJoinColumns = { @JoinColumn(name = "menu_id") })
+    public List<Menu> getMenuList(){
+        return menuList;
     }
 
-    public void setPermissionsList(List<Permission> permissionsList){
-        this.permissionsList = permissionsList;
+    public void setMenuList(List<Menu> menuList){
+        this.menuList = menuList;
     }
+
+//    public List<Permission> getPermissionsList(){
+//        return permissionsList;
+//    }
+//
+//    public void setPermissionsList(List<Permission> permissionsList){
+//        this.permissionsList = permissionsList;
+//    }
 
     //另一种数据库表设计方式，role和permission合二为一，permission以,分隔存储
 //    @Transient

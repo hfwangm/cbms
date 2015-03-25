@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
- * Created by Administrator on 2015/3/24.
+ * Created by Administrator .
  */
 public interface TeamDao extends PagingAndSortingRepository<Team , Long> ,
         JpaSpecificationExecutor<Team>

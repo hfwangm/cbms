@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Created by Administrator on 2015/3/24.
+ * 权限表，需要优化 暂时未用到
+ * Created by Administrator .
  */
 @Entity
 @Table(name = "sys_permission")

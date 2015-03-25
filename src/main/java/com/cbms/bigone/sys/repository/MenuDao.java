@@ -1,13 +1,14 @@
 package com.cbms.bigone.sys.repository;
 
-import com.cbms.bigone.sys.entity.Role;
+import com.cbms.bigone.sys.entity.Menu;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
- * Created by Administrator .
+ * Created by TheOne .
  */
-public interface RoleDao extends PagingAndSortingRepository<Role,Long> ,
-        JpaSpecificationExecutor<Role>
+public interface MenuDao extends PagingAndSortingRepository<Menu , Long> ,
+        JpaSpecificationExecutor<Menu>
 {
+
 }

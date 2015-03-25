@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
- * Created by Administrator on 2015/3/24.
+ * Created by Administrator .
  */
 public interface PermissionDao extends PagingAndSortingRepository<Permission , Long> ,
         JpaSpecificationExecutor<Permission>

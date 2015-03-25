@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * 系统用户表
- * Created by Administrator on 2015/3/11.
+ * Created by Administrator .
  */
 @Entity
 @Table(name = "sys_user")
