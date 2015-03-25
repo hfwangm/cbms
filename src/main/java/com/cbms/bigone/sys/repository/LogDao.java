@@ -11,8 +11,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 /**
  * Created by Administrator on 2015/3/14.
  */
-public interface LogDao extends PagingAndSortingRepository<Log,Long> , JpaSpecificationExecutor<Log> {
-
+public interface LogDao extends PagingAndSortingRepository<Log,Long> ,
+        JpaSpecificationExecutor<Log>
+{
     Page<Log> findByUserId(Long id , Pageable pageRequest);
 
 }
