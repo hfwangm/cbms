@@ -5,6 +5,7 @@ import com.cbms.bigone.sys.repository.SysUserDao;
 import com.cbms.commons.security.Digests;
 import com.cbms.commons.utils.Clock;
 import com.cbms.commons.utils.Encodes;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +69,16 @@ public class AccountService {
         return userDao.findByLoginName(loginName);
     }
 
-    public void registerUser(SysUser user){
-        entryptPassword(user);
-        user.setR
+    /**
+     * 保存
+     * @param user
+     */
+    public void saveUser(SysUser user){
+        if(StringUtils.isNoneBlank(user.getPlainPassword())){
+            entryptPassword(user);
+        }
+
+        userDao.save(user);
     }
 
     /**
