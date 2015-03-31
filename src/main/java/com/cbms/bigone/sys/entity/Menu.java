@@ -1,6 +1,7 @@
 package com.cbms.bigone.sys.entity;
 
 import com.cbms.commons.entity.IdEntity;
+import com.cbms.commons.entity.Treeable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "sys_menu")
-public class Menu extends IdEntity {
+public class Menu extends IdEntity implements Treeable<Long>{
 
     private Menu parent;        //父级菜单
     private String parentIds;   //所有父级编号

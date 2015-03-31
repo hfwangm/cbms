@@ -6,6 +6,7 @@ import com.google.common.base.Objects;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -39,8 +40,15 @@ public class ShiroDBRealm extends AuthorizingRealm {
         }
     }
 
+    /**
+     * 认证回调函数,登陆时调用
+     * @param authenticationToken
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
 
         return null;
     }

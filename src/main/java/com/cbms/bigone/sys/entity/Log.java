@@ -18,12 +18,12 @@ import java.util.Date;
 @Entity
 @Table(name = "sys_log")
 public class Log extends IdEntity {
-    private String ip;
+    private String ip;          //操作用户的IP
     private Long category;
-    private Date logTime;
-    private String content;
-    private String url;
-    private SysUser user;
+    private Date logTime;       //时间
+    private String content;     //详细内容
+    private String url;         //操作的URL
+    private SysUser user;       //操作用户
 
     @NotBlank
     public String getIp(){
